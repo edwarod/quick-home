@@ -33,7 +33,7 @@ function loadLesseeData() {
 
 //Add Data Function   
 function AddLessee() {
-    var res = validate();
+    var res = validateLessee();
     if (res == false) {
         return false;
     }
@@ -91,7 +91,7 @@ function getLesseeByID(lesseeId) {
 
 //function for updating employee's record  
 function UpdateLessee() {
-    var res = validate();
+    var res = validateLessee();
     if (res == false) {
         return false;
     }
@@ -110,7 +110,8 @@ function UpdateLessee() {
         dataType: "json",
         success: function (result) {
             loadLesseeData();
-            $('#ID').modal('hide');
+            $('#myModal').modal('hide');
+            $('#ID').val("");
             $('#LastName').val("");
             $('#FirstMidName').val("");
             $('#BirthDate').val("");
@@ -156,7 +157,7 @@ function clearTextBox() {
     $('#MonthlyIncome').css('border-color', 'lightgrey');
 }
 //Valdidation using jquery  
-function validate() {
+function validateLessee() {
     var isValid = true;
     if ($('#LastName').val().trim() == "") {
         $('#LastName').css('border-color', 'Red');

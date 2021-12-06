@@ -32,7 +32,7 @@ function loadLessorData() {
 
 //Add Data Function   
 function AddLessor() {
-    var res = validate();
+    var res = validateLessor();
     if (res == false) {
         return false;
     }
@@ -87,7 +87,7 @@ function getLessorByID(lessorId) {
 
 //function for updating employee's record  
 function UpdateLessor() {
-    var res = validate();
+    var res = validateLessor();
     if (res == false) {
         return false;
     }
@@ -105,7 +105,8 @@ function UpdateLessor() {
         dataType: "json",
         success: function (result) {
             loadLessorData();
-            $('#ID').modal('hide');
+            $('#myModal').modal('hide');
+            $('#ID').val("");
             $('#LastName').val("");
             $('#FirstMidName').val("");
             $('#BirthDate').val("");
@@ -148,7 +149,7 @@ function clearTextBox() {
     $('#BirthDate').css('border-color', 'lightgrey');
 }
 //Valdidation using jquery  
-function validate() {
+function validateLessor() {
     var isValid = true;
     if ($('#LastName').val().trim() == "") {
         $('#LastName').css('border-color', 'Red');
